@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block css %} <link rel="stylesheet" href="{{url_for('static', filename= 'css/app.css')}}"/> {% endblock %}
+{% block main %}
+{% include 'flash_messages.html' %}
+<h1>Secure Page</h1>
+<p>
+    Safety is a state of being protected from potential harm or something that has been designed to protect and prevent harm. In computer science, type safety is
+    the extent to which a programming language discourages or prevents type errors. A type error is erroneous or undesirable program behaviour caused by a discrepancy
+    between differing data types for the program's constants, variables, and methods, e.g., treating an integer as a floating-point number. Type safety is sometimes 
+    alternatively considered to be a property of a computer program rather than the language in which that program is written
+</p>
+
+{% endblock %}
