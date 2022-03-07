@@ -1,0 +1,68 @@
+ try
+                    {
+                        connection1.Close();
+                        connection1.Open();
+                        SqlCommand oleDbCommand = new SqlCommand("SELECT Date,Name,[1DY] AS '1D',[3MTH] AS '3M',[6MTH] AS '6M',[1YR] AS '1Y',PERM AS 'PM',Proxy AS 'Prx',Phone AS 'Phn',[1DYV] AS '1DV',[3MTHV] AS '3MV',[6MTHV] AS '6MV',[1YRV] AS '1YV',Clip,Chain,ID#,Received_By AS 'RecedBy' from Billing where Company = '" + compy + "' ", connection1);
+                        SqlCommand bcout = new SqlCommand("Select COUNT([1DY]) from Billing where Company = '" + compy + "' AND [1DY] !='' ", connection1);
+                        SqlCommand bcout1 = new SqlCommand("Select COUNT([3MTH]) from Billing where Company = '" + compy + "' AND [3MTH] !='' ", connection1);
+                        SqlCommand bcout2 = new SqlCommand("Select COUNT([6MTH]) from Billing where Company = '" + compy + "' AND [6MTH] !='' ", connection1);
+                        SqlCommand bcout3 = new SqlCommand("Select COUNT([1YR]) from Billing where Company = '" + compy + "' AND [1YR] !='' ", connection1);
+                        SqlCommand bcout4 = new SqlCommand("Select COUNT(PERM) from Billing where Company = '" + compy + "' AND PERM !='' ", connection1);
+                        SqlCommand bcout5 = new SqlCommand("Select COUNT(Proxy) from Billing where Company = '" + compy + "' AND Proxy !='' ", connection1);
+                        SqlCommand bcout6 = new SqlCommand("Select COUNT([1DYV]) from Billing where Company = '" + compy + "' AND [1DYV] !='' ", connection1);
+                        SqlCommand bcout7 = new SqlCommand("Select COUNT([3MTHV]) from Billing where Company = '" + compy + "' AND [3MTHV] !='' ", connection1);
+                        SqlCommand bcout8 = new SqlCommand("Select COUNT([6MTHV]) from Billing where Company = '" + compy + "' AND [6MTHV] !='' ", connection1);
+                        SqlCommand bcout9 = new SqlCommand("Select COUNT([1YRV]) from Billing where Company = '" + compy + "' AND [1YRV] !='' ", connection1);
+                        SqlDataAdapter dc = new SqlDataAdapter(oleDbCommand);
+                        rnum = (int)bcout.ExecuteScalar();
+                        rnum3 = (int)bcout1.ExecuteScalar();
+                        rnum6 = (int)bcout2.ExecuteScalar();
+                        rnum1 = (int)bcout3.ExecuteScalar();
+                        rnump = (int)bcout4.ExecuteScalar();
+                        rnumpx = (int)bcout5.ExecuteScalar();
+                        vnum1 = (int)bcout6.ExecuteScalar();
+                        vnum3 = (int)bcout7.ExecuteScalar();
+                        vnum6 = (int)bcout8.ExecuteScalar();
+                        vnum11 = (int)bcout9.ExecuteScalar();
+                        rnump = (int)bcout4.ExecuteScalar();
+
+                        DataTable dtte = new DataTable();
+                        dc.Fill(dtte);
+                        accbil.ColumnHeadersDefaultCellStyle.Font = new Font("arial", 9, FontStyle.Bold);
+                        this.accbil.DefaultCellStyle.Font = new Font("arial", 8);
+                        accbil.DataSource = dtte;
+                        this.accbil.RowTemplate.Height = 30;
+
+                        accbil.Columns[16].Width = 70;
+                        accbil.Columns[15].Width = 35;
+                        accbil.Columns[14].Width = 42;
+                        accbil.Columns[13].Width = 34;
+                        accbil.Columns[12].Width = 34;
+                        accbil.Columns[11].Width = 34;
+                        accbil.Columns[10].Width = 34;
+                        accbil.Columns[9].Width = 34;
+                        accbil.Columns[8].Width = 32;
+                        accbil.Columns[7].Width = 25;
+                        accbil.Columns[6].Width = 25;
+                        accbil.Columns[5].Width = 20;
+                        accbil.Columns[4].Width = 23;
+                        accbil.Columns[3].Width = 23;
+                        accbil.Columns[2].Width = 23;
+                        accbil.Columns[1].Width = 55;
+                        accbil.Columns[0].Width = 63;
+                        prt.Enabled = true;
+                       
+                        accbil.Visible = true;
+                        subt.Enabled = false;
+                        cal2.Enabled = false;
+                        cal1.Enabled = false;
+                        label1.Visible = true;
+                        label1.Text = compy + " " + "billing sheet entries";
+
+
+                    }
+                    catch (Exception bll)
+                    {
+                        MessageBox.Show("Error" + bll);
+
+                    }
